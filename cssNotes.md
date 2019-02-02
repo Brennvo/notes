@@ -19,5 +19,16 @@
 
             , then it will stay *fixed* at 600px, regardless of its container
             - **this is a probelm if our browser size is only 320px for ex**
-            
+
+        * How we should implement:
+            ```css
+            img {
+                width: 100%;
+                max-width: 700px;
+            }
+            ```
+
+            * says that the fixed width of the image should take up entire size of parent element, **unless** it is greater than 700px
+
+            * [video example here](https://youtu.be/2dha0BosQ6E?t=341)
 
