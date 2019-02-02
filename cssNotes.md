@@ -1,4 +1,5 @@
 **THESE HAVE NO STRUCTURE**
+
 These are just snibbets of things I find important to look back on/reference in the future.
 ----
 
