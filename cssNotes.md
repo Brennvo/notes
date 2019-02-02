@@ -33,15 +33,22 @@
             * [video example here](https://youtu.be/2dha0BosQ6E?t=341)
 
 * Flexbox 101
-    * Two axis: main axis & cross axis
-    * Main axixs: defind by `flex-direction' (either row or column)
-        * Row main axis = horizontal
-        * ![row main axis](https://mdn.mozillademos.org/files/15614/Basics1.png)
-        * Column main axis = vertical
-        * ![column main axis](https://mdn.mozillademos.org/files/15615/Basics2.png)
-    * Cross axis: whatever is perpendicular to the main axis
-        * Row cross axis = vertical
-        * Column cross axis = horizontal
+    * The two pivotal axis to flexbox
+        1) Main axixs: defind by `flex-direction' (either row or column)
+            * Row main axis = horizontal
+                - ![row main axis](https://mdn.mozillademos.org/files/15614/Basics1.png)
+            * Column main axis = vertical
+                - ![column main axis](https://mdn.mozillademos.org/files/15615/Basics2.png)
+        2) Cross axis: whatever is perpendicular to the main axis
+            * Row cross axis = vertical
+            * Column cross axis = horizontal
+    * Start and end lines
+        * When `flex-direction: row`, then the start edge is on the left, and the end edge is on the right (this is due to the English language -- in Arabic, it is reversed, however)
+        * If you do `flex-directoin: row-reverse`, the start and end lines are now on the opposite sides (start is on the right, and end is on the left)
+    * The container
+        * by making the container `display: flex`, all of the container's children become **flex items**
+
+
     
 
 * [Good example of `justify-content` in Flexbox](https://learn.freecodecamp.org/responsive-web-design/css-flexbox/align-elements-using-the-justify-content-property)
