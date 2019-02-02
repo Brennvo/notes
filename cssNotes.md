@@ -32,6 +32,18 @@
 
             * [video example here](https://youtu.be/2dha0BosQ6E?t=341)
 
+* Flexbox 101
+    * Two axis: main axis & cross axis
+    * Main axixs: defind by `flex-direction' (either row or column)
+        * Row main axis = horizontal
+        * ![row main axis](https://mdn.mozillademos.org/files/15614/Basics1.png)
+        * Column main axis = vertical
+        * ![column main axis](https://mdn.mozillademos.org/files/15615/Basics2.png)
+    * Cross axis: whatever is perpendicular to the main axis
+        * Row cross axis = vertical
+        * Column cross axis = horizontal
+    
+
 * [Good example of `justify-content` in Flexbox](https://learn.freecodecamp.org/responsive-web-design/css-flexbox/align-elements-using-the-justify-content-property)
 
 * [Flexbox playground cheat sheet](https://codepen.io/enxaneta/full/adLPwv/)
@@ -43,3 +55,8 @@
     * For `flex-direction: column;`
         * `align-items` moves the boxes on the x-acis (left and right)
         * `justify-content` moves the boxes on the y-axis (up and down)
+
+* Flexbox: `align-items` vs. `align-content`
+    * `align-items`: this is what aligns the items as a *whole* within the container
+        * Think of it as aligning everything in a PowerPoint document relative to the background of that PPT slide (all the content shifts)
+    * `align-content`: determins the spacing between lines
