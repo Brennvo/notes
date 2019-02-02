@@ -11,9 +11,11 @@
         * If image > broswer window, then browser adds a horizontal scroller
         * If you set the width as such:
 
-            > img {
-            >    width: 600px;
-            > }
+            ```css
+            img {
+                width: 600px;
+            }
+            ```
 
             , then it will stay *fixed* at 600px, regardless of its container
             - **this is a probelm if our browser size is only 320px for ex**
