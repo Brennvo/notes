@@ -1,6 +1,6 @@
-**THESE HAVE NO STRUCTURE**
+#**THESE HAVE NO STRUCTURE**
 
-These are just snibbets of things I find important to look back on/reference in the future.
+##These are just snibbets of things I find important to look back on/reference in the future.
 ----
 
 * Changing an `<img>` to `display: block;` removes it from its default inline property
