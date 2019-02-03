@@ -118,3 +118,24 @@
             }
         }
         ```
+* [`rem` and `em` article](https://zellwk.com/blog/rem-vs-em/)
+    - `em` and `rem` are often used in `font-size`, `padding`, and `margin`
+* `em` is always equal to the current font size
+    - if you declare a new font-size in an element, then use `em` elsewhere in the same element, it's based on THAT element's font size
+    ```css
+    html {
+        font-size: 100%; /* default 16px (default browser) */
+    }
+    
+    h1 {
+        font-size: 2em; /* computes to 32px -- now, other properties computed with `em` in `<h1>` see 1em = 32 */
+        margin-bottom: 1em /* computes to 32px */
+    }
+
+    p {
+        font-size: 1em; /* computes to 16px */
+        margin-bottom: 1em /* computs to 16 px */
+    }
+* `rem` is always equal to the `font-size` declared in `<html>`
+
+* `rem` and `em` article: https://webdesign.tutsplus.com/tutorials/comprehensive-guide-when-to-use-em-vs-rem--cms-23984
