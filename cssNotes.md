@@ -101,8 +101,8 @@
     - it is displayed as an `inline` element, but you can now apply height and width values (which is not possible in a pure `inline` element)
 
 * Article about `box-sizing`[0] and article about using the `inherit` keyword with it, as well as best practice for using `box-sizing`[1]
-    - [0]: https://css-tricks.com/box-sizing/
-    - [1]: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+    - 0: https://css-tricks.com/box-sizing/
+    - 1: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
 * [Great article on `flex-basis`](https://gedd.ski/post/the-difference-between-width-and-flex-basis/)
     - Flex basis depends on the container. For instance, if your container is 500px, and you assign a flex-basis to each item as `250px`, then if you are `flex-wrap: wrap` on the container, then you will fit 2 flex-items in your container. The rest will wrap around.
 * When the order of your flex items all have the same number, then it is ordered by their layout in the HTML
