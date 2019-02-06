@@ -33,3 +33,6 @@
 
 * For images and captions, use `<figcaption>` inside of a `<figure>` element
 * If you want to reference an SVG, but also a PNG in case a broswer doesn't support it, use the `srcset="image.svg"` to reference the SVG version, and then use the regular `src="image.png"` to rference the other type of image file you want to include
+* srcset and how it works
+    - [Article one that describes using `sizes`](https://www.sitepoint.com/how-to-build-responsive-images-with-srcset/)
+    - `sizes: 50vw` tells the DOM how large the image will be relative to the user's viewport width
