@@ -18,7 +18,7 @@
     <a href="mailto:">Share with friends</a>
     ```
 * Superscript and subscript is good for dates, math, and elements
-    * Use the `<sup>` and `<sub>` keywords
+    - Use the `<sup>` and `<sub>` keywords
     
     ```html
     <p>My birthday is on the 17<sup>th</sup> of August</p>
@@ -36,3 +36,35 @@
 * srcset and how it works
     - [Fantastic article that talks about `srcset` and `picture`](https://www.sitepoint.com/how-to-build-responsive-images-with-srcset/)
     - `sizes: 50vw` tells the DOM how large the image will be relative to the user's viewport width
+* Give your tables `<caption>` tag to explain what the table is to screen readers
+    - It goes directly beneath the `<table>` tag
+* Use `scope` attribute on `<th>` to specify that something is a header for either a column or row
+    - this means the screenreader would know if you had the row acting as a column and vice-versa
+
+### Forms
+
+* `action` is where the form data will be sent
+* `<fieldset>` is how you create a group of widgets that share a similar purpose
+    - adding a `<legend>` elmeents below the `<fieldset>` tag explains its purpose
+
+    ```html
+        <form>
+            <fieldset>
+                <legend>Fruit juice size</legend>
+                <p>
+                <input type="radio" name="size" id="size_1" value="small">
+                <label for="size_1">Small</label>
+                </p>
+                <p>
+                <input type="radio" name="size" id="size_2" value="medium">
+                <label for="size_2">Medium</label>
+                </p>
+                <p>
+                <input type="radio" name="size" id="size_3" value="large">
+                <label for="size_3">Large</label>
+                </p>
+            </fieldset>
+        </form>
+    ```
+
+    <blockquote cite="developer.mozilla.org">When reading the above form, a screen reader will speak "Fruit juice size small" for the first widget, "Fruit juice size medium" for the second, and "Fruit juice size large" for the third.</blockquote>
