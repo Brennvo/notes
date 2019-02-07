@@ -88,32 +88,14 @@
         ```
     * [Good article on CORS](https://www.codecademy.com/articles/what-is-cors)
     * HTTP Flow
-        1. Open TCP Connection in one of the following manners:
-            a. new connection
+        ⋅⋅1. Open TCP Connection in one of the following manners:
 
-            b. resuse existing connection
+            - new connection
 
-            c. open serveral connections
+            - resuse existing connection
+
+            - open serveral connections
         
-        2. Send an HTTP message
-
-        <code>
-            GET / HTTP/1.1
-            Host: developer.mozilla.org
-            Accept-Language: fr
-        </code>
-
-        3. Read the response from the server
-
-        <code>
-            HTTP/1.1 200 OK
-            Date: Sat, 09 Oct 2010 14:28:02 GMT
-            Server: Apache
-            Last-Modified: Tue, 01 Dec 2009 20:18:22 GMT
-            ETag: "51142bc1-7449-479b075b2891b"
-            Accept-Ranges: bytes
-            Content-Length: 29769
-            Content-Type: text/html
-            
-            &lt; !DOCTYPE html... (here comes the 29769 bytes of the requested web page)
-        </code>
+        ⋅⋅2. Send an HTTP message
+        
+        ⋅⋅3. Read the response from the server
