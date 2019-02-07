@@ -89,13 +89,8 @@
     * [Good article on CORS](https://www.codecademy.com/articles/what-is-cors)
     * HTTP Flow
         1. Open TCP Connection in one of the following manners:
-
             - new connection
-
             - resuse existing connection
-
             - open serveral connections
-        
         2. Send an HTTP message
-
         3. Read the response from the server
