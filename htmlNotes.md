@@ -97,15 +97,15 @@
         
         2. Send an HTTP message
 
-        <samp>
+        <code>
             GET / HTTP/1.1
             Host: developer.mozilla.org
             Accept-Language: fr
-        </samp>
+        </code>
 
         3. Read the response from the server
 
-        <samp>
+        <code>
             HTTP/1.1 200 OK
             Date: Sat, 09 Oct 2010 14:28:02 GMT
             Server: Apache
@@ -115,5 +115,5 @@
             Content-Length: 29769
             Content-Type: text/html
             
-            &lt; DOCTYPE html... (here comes the 29769 bytes of the requested web page)
-        </samp>
+            &lt; !DOCTYPE html... (here comes the 29769 bytes of the requested web page)
+        </code>
