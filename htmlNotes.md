@@ -44,6 +44,7 @@
 ### Forms
 
 * `action` is where the form data will be sent
+* the `for` attribute in the `<label>` element references the ***ID*** of the `<input>` element it is a label *for* (if somebody is actually reading this besides myself, I hope you like that pun)
 * `<fieldset>` is how you create a group of widgets that share a similar purpose
     - adding a `<legend>` elmeents below the `<fieldset>` tag explains its purpose
 
@@ -68,3 +69,51 @@
     ```
 
     <blockquote cite="developer.mozilla.org">When reading the above form, a screen reader will speak "Fruit juice size small" for the first widget, "Fruit juice size medium" for the second, and "Fruit juice size large" for the third.</blockquote>
+
+    * If you give a browser an input that it doesn't know, it will default to `type="text"`
+    * To allow users to select multiple options in a `<select>` tag, use the `multiple` attribute
+
+        ````html
+        <select multiple id="multiple">
+            <option>Banana</option>
+            <option>Carrot</option>
+            <option>Coffee</option>
+        </select>
+        ```
+    
+    * for `<input type="number">` you can specify how much you want the button incrementer to increment by providing a `step` attribute
+
+        ```html
+        <input type="number" step="4">`
+        ```
+    * [Good article on CORS](https://www.codecademy.com/articles/what-is-cors)
+    * HTTP Flow
+        1. Open TCP Connection in one of the following manners:
+            a. new connection
+
+            b. resuse existing connection
+
+            c. open serveral connections
+        
+        2. Send an HTTP message
+
+        <samp>
+            GET / HTTP/1.1
+            Host: developer.mozilla.org
+            Accept-Language: fr
+        </samp>
+
+        3. Read the response from the server
+
+        <samp>
+            HTTP/1.1 200 OK
+            Date: Sat, 09 Oct 2010 14:28:02 GMT
+            Server: Apache
+            Last-Modified: Tue, 01 Dec 2009 20:18:22 GMT
+            ETag: "51142bc1-7449-479b075b2891b"
+            Accept-Ranges: bytes
+            Content-Length: 29769
+            Content-Type: text/html
+
+            <!DOCTYPE html... (here comes the 29769 bytes of the requested web page)
+        </samp>
