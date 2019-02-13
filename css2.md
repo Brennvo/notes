@@ -39,15 +39,13 @@
     - if you do not add a tag before `:`, then it will match ANY tag that is the "only type" of it's parent
     - however, adding a tag will only target the "only type" of that tag
 * [Codepen of `:only-of-type`](https://codepen.io/Hankis/pen/exLYvq)
-    - ```html
-        <blockquote cite="innovati">
-            you can think of div :only-of-type as being div *:only-of-type
+        
+    > you can think of div :only-of-type as being div *:only-of-type
 
-            if the document is like a tree, :only-of-type is going to target each tag that is the only one of its type on each 'level' of that tree. So with div *:only-of-type you're targeting any tag that's unique in its type among its siblings that's inside a <div> tag
+    > if the document is like a tree, :only-of-type is going to target each tag that is the only one of its type on each 'level' of that tree. So with div *:only-of-type you're targeting any tag that's unique in its type among its siblings that's inside a <div> tag
 
-            that red anchor tag inside the <li>, inside the <ul> is the only <a> tag among its sibling elements
-        </blockquote>
-        ```
+    > that red anchor tag inside the <li>, inside the <ul> is the only <a> tag among its sibling elements
+
 
 
 ### `(an + b)` psuedo-class selector formula
