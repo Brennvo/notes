@@ -35,7 +35,19 @@
 
 * `:nth-child(n)`, where `n` can be a number, keyowrd, or mathematical formula
 * [interesting pseudo-class link](https://developer.mozilla.org/en-US/docs/Web/CSS/:is)
+* `:only-of-type` can be tricky
+    - if you do not add a tag before `:`, then it will match ANY tag that is the "only type" of it's parent
+    - however, adding a tag will only target the "only type" of that tag
+* [Codepen of `:only-of-type`](https://codepen.io/Hankis/pen/exLYvq)
+    - ```html
+        <blockquote cite="innovati">
+            you can think of div :only-of-type as being div *:only-of-type
 
+            if the document is like a tree, :only-of-type is going to target each tag that is the only one of its type on each 'level' of that tree. So with div *:only-of-type you're targeting any tag that's unique in its type among its siblings that's inside a <div> tag
+
+            that red anchor tag inside the <li>, inside the <ul> is the only <a> tag among its sibling elements
+        </blockquote>
+        ```
 
 
 ### `(an + b)` psuedo-class selector formula
@@ -98,3 +110,48 @@
 * [Child vs descendent](http://www.peachpit.com/articles/article.aspx?p=1413883&seqNum=10)
 * [css-tricks child selector](https://css-tricks.com/almanac/selectors/c/child/)
 * [Stackoverflow child seelctor](https://stackoverflow.com/questions/33442967/difference-between-child-and-descendant-combinator-selectors)
+* [Stackoverflow descendent and appending class name example](https://stackoverflow.com/questions/16093883/p-classname-or-classname-p-any-difference)
+* Using the adjacent sibling combinator
+* `A + B`, where any element matching B that is the next sibling of an element matching A
+    - Start with an example
+        ```html
+        <h3>Heading</h3>
+        <h2>Random H2</h2>  // IT LOOKS HERE, SEES IT ISN'T A &lt;p&gt;, SO IT MOVES ON
+        <p>Some stuff in a paragraph</p> // NOT RED
+        <p>Some stuff in a paragraph</p>
+        <p>Some stuff in a paragraph</p>
+        <h3>Another heading</h3>
+        <p>Some stuff in a paragraph</p>    // RED
+        <p>Some stuff in a paragraph</p>
+        <p>Some stuff in a paragraph</p>
+        ```
+        ```css
+        h3 + p {
+            color: red;
+        }
+        ```
+    - Notice how this selector only deals with the *next* siling
+* To target ALL siblings, you use the `~`
+    - This would've also targeted that `<p>` tag
+    ```css
+    h3 ~ p {
+        color: red;
+    }
+    ```
+* Question, why do we get two red lines here?
+    ```css
+    p + p {
+        color: red;
+    }
+    ```
+    - Let's walk through the HTML
+    ```html
+        <h3>Heading</h3>
+        <h2>Random H2</h2>
+        <p>Some stuff in a paragraph</p> // Element that matches B, so go to next sibling
+        <p>Some stuff in a paragraph</p> // Hi, it's me, the sibling. Oh, but wait, I also match B, so let's figure out if my sibling is a &lt;p&gt; symbol
+        <p>Some stuff in a paragraph</p> // Hi, I'm that sibling
+        <h3>Another heading</h3>    // Boo, I'm not a &lt;p&gt; sibling
+        <p>Some stuff in a paragraph</p>    // Element that matches B, so go to next sibling
+        <p>Some stuff in a paragraph</p>    // Hi, it's me, the sibling. Oh, but wait, I also match B, so let's figure out if my sibling is a &lt;p&gt; symbol
+        <p>Some stuff in a paragraph</p>
