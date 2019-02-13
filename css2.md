@@ -43,8 +43,13 @@
     - EX] `p:nth-child(n)` = `p:nth-child(1n+0)`
         - this will highlight every paragraph since it evaluated the `an+b` for EACH child
         - when you use `n`, it iterates through every child element and replaces the index that the child element is located in the `n` position
+
             (1n+0) = 1 * **0** + 0 == 0
+
             (1n+0) = 1 * **1** + 0 == 1
+
             (1n+0) = 1 * **2** + 0 == 2
+
             *...and so on*
+            
             - remember, `(1n+0)` is the same as just using `n`, this is just for illustrative purposes
