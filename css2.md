@@ -34,6 +34,9 @@
     ![pseudo-classes](https://i.imgur.com/s7ui2kh.png)
 
 * `:nth-child(n)`, where `n` can be a number, keyowrd, or mathematical formula
+* [interesting pseudo-class link](https://developer.mozilla.org/en-US/docs/Web/CSS/:is)
+
+
 
 ### `(an + b)` psuedo-class selector formula
 * `an+b`: selects any html element targeted by the selector if it is the (an+b)th child element in its parent HTML element
@@ -82,6 +85,7 @@
         (5n+0) = 5 * **3** + 0 == 15 --> styles the fifthteenth element
     - **takeaways**: if you want to style multiples of a dom tree STARTING AT A POSITION, use the `b`
         - So, `(3n+2)` reads "select the multiples of three STARTING AT POSITION 2"
+    - [Great YouTube video on the topic](https://www.youtube.com/watch?v=4NsJtaaC0qI)
 * [`nth-of-child` vs. `nth-of-type`](https://css-tricks.com/the-difference-between-nth-child-and-nth-of-type/)
     - `nth-of-child(2)` means if it is the second child of its parent
     - `nth-of-type(2)` means select the second paragraph, REGARDLESS of if it is actually the second child of its parent
@@ -89,4 +93,8 @@
 ### Pseudo-elements
 * Preceeded by two colons and can be added to the end of selectors to select a certain *part* of an element
 
-    
+## Combinators
+
+* [Child vs descendent](http://www.peachpit.com/articles/article.aspx?p=1413883&seqNum=10)
+* [css-tricks child selector](https://css-tricks.com/almanac/selectors/c/child/)
+* [Stackoverflow child seelctor](https://stackoverflow.com/questions/33442967/difference-between-child-and-descendant-combinator-selectors)
