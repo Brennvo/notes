@@ -36,6 +36,8 @@
 * `:nth-child(n)`, where `n` can be a number, keyowrd, or mathematical formula
     `p:nth-child(1)` selec tthe first paragraph of its parent
     `p:nth-child(odd)` select the odd children paragraphs
+
+### `(an + b)`
 * `an+b`: selects any html element targeted by the selector if it is the (an+b)th child element in its parent HTML element
     - n: any number (0, 1, 2, 3...)
     - a: integer (default = 1)
@@ -43,13 +45,48 @@
     - EX] `p:nth-child(n)` = `p:nth-child(1n+0)`
         - this will highlight every paragraph since it evaluated the `an+b` for EACH child
         - when you use `n`, it iterates through every child element and replaces the index that the child element is located in the `n` position
+        - the outcome is the child it will style
 
-            (1n+0) = 1 * **0** + 0 == 0
+            (1n+0) = 1 * **0** + 0 == 0 --> ignore since there are no "0" elements in the DOM tree
 
-            (1n+0) = 1 * **1** + 0 == 1
+            (1n+0) = 1 * **1** + 0 == 1 --> styles the first element
 
-            (1n+0) = 1 * **2** + 0 == 2
+            (1n+0) = 1 * **2** + 0 == 2 --> styles the second elemenet
 
             *...and so on*
-            
+
             - remember, `(1n+0)` is the same as just using `n`, this is just for illustrative purposes
+    - EX] `p:nth-child(2n)` == `p:nth-child(even)`
+
+        (2n+0) = 2 * **0** + 0 == 0 --> ignore since there are no "0" elements in the DOM tree
+
+        (2n+0) = 2 * **1** + 0 == 2 --> styles the second element
+
+        (2n+0) = 2 * **2** + 0 == 4 --> styles the fourth element
+
+    - EX] `p:nth-child(2n+1)` == `p:nth-child(odd)`
+
+        (2n+1) = 2 * **0** + 1 == 1 --> styles the first element
+
+        (2n+1) = 2 * **1** + 1 == 3 --> styles the third element
+
+        (2n+1) = 2 * **2** + 1 == 5 --> styles the fifth element
+
+    - **takeaways**: if you want to style multiples of a dom tree, just manipulate the `n`. because remember, `b` is defaulted to 0
+    - So, for example, if you wanted multiples of five use `(5n)`
+
+        (5n+0) = 5 * **0** + 0 == 0 --> ignore since there are no "0" elements in the DOM tree
+
+        (5n+0) = 5 * **1** + 0 == 5 --> styles the fifth element
+
+        (5n+0) = 5 * **2** + 0 == 10 --> styles the tenth element
+
+        (5n+0) = 5 * **3** + 0 == 15 --> styles the fifthteenth element
+    - **takeaways**: if you want to style multiples of a dom tree STARTING AT A POSITION, use the `b`
+        - So, `(3n+2)` reads "select the multiples of three STARTING AT POSITION 2"
+* [`nth-of-child` vs. `nth-of-type`](https://css-tricks.com/the-difference-between-nth-child-and-nth-of-type/)
+    - `nth-of-child(2)` means if it is the second child of its parent
+    - `nth-of-type(2)` means select the second paragraph, REGARDLESS of if it is actually the second child of its parent
+    
+
+    
