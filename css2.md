@@ -153,3 +153,24 @@
         <p>Some stuff in a paragraph</p>    // Element that matches B, so go to next sibling
         <p>Some stuff in a paragraph</p>    // Hi, it's me, the sibling. Oh, but wait, I also match B, so let's figure out if my sibling is a &lt;p&gt; symbol
         <p>Some stuff in a paragraph</p>
+
+
+## Colors
+* RGBA and HSLA use opacity
+    - Opacity of 0 is completely transparent, whereas an opacity of 1 is completely opaque
+* Notice the different
+    ```css
+        /* Red with RGBA */
+    p:nth-child(1) {
+    background-color: rgba(255,0,0,0.5);
+    }
+
+    /* Red with opacity */
+    p:nth-child(2) {
+    background-color: rgb(255,0,0);
+    opacity: 0.5;
+    }
+    ```
+
+    - The first &lt;p&gt; will have *just* the background be transparent, whereas the second &lt;p&gt; will have *everything* be transparent, since you are explicitly stating that element's opacity
+    - Good rule of thumb: RGBA for setting the background of something transparent (like a caption over an image), but still need readable text -- opacity for animations
