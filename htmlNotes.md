@@ -78,8 +78,8 @@
             <option>Banana</option>
             <option>Carrot</option>
             <option>Coffee</option>
-        </select>
-        ```
+        </select> 
+         ```
     
     * for `<input type="number">` you can specify how much you want the button incrementer to increment by providing a `step` attribute
 
