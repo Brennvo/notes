@@ -34,10 +34,8 @@
     ![pseudo-classes](https://i.imgur.com/s7ui2kh.png)
 
 * `:nth-child(n)`, where `n` can be a number, keyowrd, or mathematical formula
-    `p:nth-child(1)` selec tthe first paragraph of its parent
-    `p:nth-child(odd)` select the odd children paragraphs
 
-### `(an + b)`
+### `(an + b)` psuedo-class selector formula
 * `an+b`: selects any html element targeted by the selector if it is the (an+b)th child element in its parent HTML element
     - n: any number (0, 1, 2, 3...)
     - a: integer (default = 1)
@@ -88,5 +86,7 @@
     - `nth-of-child(2)` means if it is the second child of its parent
     - `nth-of-type(2)` means select the second paragraph, REGARDLESS of if it is actually the second child of its parent
     
+### Pseudo-elements
+* Preceeded by two colons and can be added to the end of selectors to select a certain *part* of an element
 
     
