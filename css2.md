@@ -174,3 +174,29 @@
 
     - The first &lt;p&gt; will have *just* the background be transparent, whereas the second &lt;p&gt; will have *everything* be transparent, since you are explicitly stating that element's opacity
     - Good rule of thumb: RGBA for setting the background of something transparent (like a caption over an image), but still need readable text -- opacity for animations
+
+
+## Cascade and Inheritance
+* The order
+    1. `!important`
+        - USE CASE: You assign an element an ID of #spcial that looks like this:
+            ```css
+            #special {
+                background-color: green;
+                border: 2px solid red;
+            }
+            ```
+        - But, it's also part of a box class that looks like this:
+        ```css
+        .box {
+            background-color: none !important;
+        }
+        ```
+        - Even though the class is a *lower specificty* than the id, it will **still override** because it is an `!important` declaration
+        - You also as
+    2. ids (#idName)
+    3. classes (.className)
+    4. tags (<p>)
+
+
+
