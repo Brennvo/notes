@@ -177,6 +177,14 @@
 
 
 ## Cascade and Inheritance
+* CONFLICTING ORDER: I call this the "order of operations of CSS", such that the first bullet here gets applied, then the second, then the third
+    1. The user agent's (browser) default styling
+    2. The declarations in a user's stylesheet (the person visiting the website)
+    3. Author's stylesheet declarations (the web developer's .css files)
+    4. The `!important ` declaration in a an author's (web developer's) .css files
+    5. A user (website visitor's) `!important` stylesheet declarations
+        - this would be for people who are visually impaired and need things like larger text to always appear
+### Specificity
 * The order
     1. `!important`
         - USE CASE: You assign an element an ID of #spcial that looks like this:
@@ -196,7 +204,10 @@
         - You also as
     2. ids (#idName)
     3. classes (.className)
-    4. tags (<p>)
+    4. element tags (<p>)
+* "Specificty" is just a calculation to determine how specific something is
+
+
 
 
 
