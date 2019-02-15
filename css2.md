@@ -208,6 +208,28 @@
 * "Specificty" is just a calculation to determine how specific something is
 
 
+### Inheritance
+* What IS inherited: font-family, color
+* What IS NOT inherited: margin, padding, border, background-image
 
+## Box Model
+* [Margin collapse Stackoverflow explanation](https://stackoverflow.com/questions/7168993/how-do-nested-vertical-margin-collapses-work)
+* When do elements *not* collapse?
+    - Positioned elements
+        - Absolute
+        - Fixed
+    - Floated and cleared elements
+    - Inline-block elements
+    - Overflow set to anything (**except** visible)
+* [Great video on margin collapsing, which is what I reference below in my notes](https://www.youtube.com/watch?v=7D6RyTIBk08) 
+* When **do** they collapse?
+    - Vertical margins of two vertically adjacent elements
+    - Vertical margins collapsign between the parent and child element
+        - **only the first and last child**
+        - The only time this won't collapse is when there is a padding, border, or content in the parent element
+            - What **should** happen:
+                ![This is what should happen](https://imgur.com/a/HttuFsz)
+            - What **should not** happen:
+                ![This is what should NOT happen](https://imgur.com/a/Oh4Izna)
 
 
