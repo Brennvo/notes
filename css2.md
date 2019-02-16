@@ -322,3 +322,57 @@
 * A good article on implementing `@font-face` and using the same `font-family` name for the same font style of text, but when you have downloaded different versions of it
     - Example] Say you download a font called 'DroidSerif' in its regular and bold version
         - Instead of naming each `font-family` to their respective names (DroidSerifRegular and DroidSerifBold), just name them both the same (DroidSerif), but then change the `font-weight` on each `@font-face` so that don't have to keep specifying `font-family` in your CSS when you want to use a specific version of DroidSerif
+
+----
+
+## Styling Boxes
+
+### Box Model Recap
+![box model](https://mdn.mozillademos.org/files/13647/box-model-standard-small.png)
+
+* box heights adopt the height of the *content* inside the box, **unless** you give it an absolute height
+* By default, `background-images` default to the outer edge of the box border
+    - this means it overlays the padding **and** border
+        - However, if you have an opaque border, the background-image will hide behind it
+* To make a border without changing the size of the box, use `outline` -- it is drawn **on top** of the box
+* you **CANNOT** tamper with an `inline` box's width and height settings
+    - padding, margin, and border of these elements only affect the surrounding text, but **not** the surrounding block boxes
+* To center a container inside of its parent: `margin: 0 auto;`
+* Important and recursive example I always fall into
+    * [Link for example](https://mdn.github.io/learning-area/css/styling-boxes/box-model-recap/min-max-container.html)
+            - In this example, the image falls outside of its parent (the white box), and overflows onto the grey body
+            - In order to make sure that the image stays within its parent, we need to do **three things**
+                1. Set the image to `display: block;`
+                2. Change the margins to center: `margin: 0 auto;`
+                3. Set the max-width of the image so that it never falls out of its parent by doing `max-width: 100%` -- this makes sure it is only 100% of its parent and never gets larger (which it is doing in the link above)
+                - [Here is the new example](https://mdn.github.io/learning-area/css/styling-boxes/box-model-recap/min-max-image-container.html)
+
+#### Total width of box = `width` + `padding-right` + `padding-left` + `border-right` + `border-left`
+* This formula can get annoying, so we can change it up using `box-sizing`
+* **When we change the `box-sizing: border-box`, we make the box model's `height` and `width` now include the content, padding, and border (as opposed to just the content as we've been used to before)
+    ![image to new box model](https://mdn.mozillademos.org/files/13649/box-model-alt-small.png)
+    - [Codepen that explicitly shows this](https://codepen.io/pen/?&editable=true)
+        - **NOTE**: the "width" being shown isn't a CSS value, it's a logical "width" that the box is taking up
+            - This is important because in the top box, the actual `width` of the box is 300px since we aren't in `border-box` -- when we state `width: 300px` in the default `box-sizing` mode, we are explicitly stating the content's width, and **not** the entire box's width like we do in `border-box`
+
+### Backgrounds
+* A background of an element sits underneath the content, padding, and border
+    - it doesn't sit underneath the margin, because the margin is technically the area *outside* the element
+    - **unless** you specify the `background-clip` property as discussed before
+
+* it is important to note that background images are for decorative purposes only
+    - if your image in the background-image has meaning, make it an `<img>` so that assistive technologies actually understand there is a significant element on the page and provide a caption to it as well
+* `background-position` takes different measurement units
+    - percentage means how far along in the box it should be
+        - Ex] `backgrounnd-position: 99% center` meanns 99% to the right of the box, then center it horizontally
+* `background-attachment` is the behavior of the background image as the content scrolls (only when there is enough content to scroll)
+    - `background-attachment: scroll` means the background scolls with the text
+    - `background-attachment: fixed` means the background stays put as you scroll with the content
+
+* [link to sports cards codepen](https://codepen.io/Hankis/pen/vbQQLB?editors=1100)
+
+#### `background` properties for quick reference
+![background properties for quick reference](https://i.imgur.com/gYnkn8S.png)
+
+* **ALWAYS SET A BACKGROUND-COLORS AND FONT COLORS REGARDLESS OF WHETHER IT LOOKS GOOD WITHOUT ONE OR NOT**
+    - [link explaining why due to new nightmode in browsers](https://www.luu.io/posts/web-devs-font-color)
