@@ -232,7 +232,8 @@
             - What **should not** happen:
                 ![This is what should NOT happen](https://imgur.com/a/Oh4Izna)
 * Content's width is defaulted to be 100% of the avilable space (after the margin, border, and padding have taken their share)
-* [`background-clip`](https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip) is how you determine how far an image extends out to the edge of the border
+* `background-clip` is how you determine how far an image extends out to the edge of the border
+    - [MDN outlines this pretty well in their example](https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip)
 
 
 ### Types of boxes
@@ -265,5 +266,37 @@
 
 * `text-decoration` is more interesting than you think
     - Values: `none`, `underline`, `overline`, `line-through`
+        - *NOTE*: people generally prefer to use `border-bottom` for underlining for a couple of reasons
+            - better styling
+            - doesn't cut across the word is it "underlining", such as the tails on "g" and "y"
     - It accepts multiple values, and you can even style those values
         - `text-decoration-line`, `text-decoration-style`, `text-decoration-color`
+
+## List styling
+* Three important properties for styling lists
+    1. `list-style-type`
+        - square, circle, numbers, letters, roman numerals
+    2. `list-style-position`
+        - when the same bullet's text begins to run onto a new line, should that text be in line with the text above it, or the bullet it is underneath?
+        - `list-style-position: outside`
+        ![outside](https://i.imgur.com/KwdFPjI.png)
+        - `list-style-position: inside`
+        ![inside](https://i.imgur.com/B16DlaI.png)
+    3. `list-style-image`
+
+## Links styling
+* Important to konw their psuedo-class states
+    - Link (means it is univisited)
+        - The default *state* that the link resides in (aka when it isn't in any other state)
+    - Unvisited
+        - Default color: blue
+    - Visited
+        - Default color: purple
+    - Hover
+        - Makes the mousepointer change to a hand icon
+    - Focus
+    - Active (when a link is being clicked on)
+        - Default color: red
+        - You can achieve this by holding down the mouse button, but not letting go
+* The order you override the pseudo-classes matters
+    - [Visit MDN to get the order](https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Styling_links)
