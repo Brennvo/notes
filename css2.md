@@ -1,5 +1,6 @@
 # CSS Notes
 
+## Introduction to CSS
 * CSS declaration = property + value
     - property: `background-color`, `background`, etc.
     - value: 'red', '10px`, etc.
@@ -16,7 +17,7 @@
 * CSS shortcut order with two values
     - TOP/BOTOM, LEFT/RIGHT
 
-## Attribute Selectors
+### Attribute Selectors
 * Value attribute selectors
     - `[attr]`
     - `[attr=val]`: only if the attribute has a value of `val`
@@ -27,7 +28,7 @@
     - `[attr$=val]` attribute must **END** with `val`
     - `[attr*=val]` attribute must **CONTAIN** `val` in it
 
-## Pseudo-classes and pseudo-elements
+### Pseudo-classes and pseudo-elements
 * These do *not* select elements, but rather, **parts** of an element or elements in certain contexts
 * Pseudo-class: keyword added to the end of a selector preceded by a colon
 
@@ -48,7 +49,7 @@
 
 
 
-### `(an + b)` psuedo-class selector formula
+#### `(an + b)` psuedo-class selector formula
 * `an+b`: selects any html element targeted by the selector if it is the (an+b)th child element in its parent HTML element
     - n: any number (0, 1, 2, 3...)
     - a: integer (default = 1)
@@ -103,7 +104,7 @@
 ### Pseudo-elements
 * Preceeded by two colons and can be added to the end of selectors to select a certain *part* of an element
 
-## Combinators
+### Combinators
 
 * [Child vs descendent](http://www.peachpit.com/articles/article.aspx?p=1413883&seqNum=10)
 * [css-tricks child selector](https://css-tricks.com/almanac/selectors/c/child/)
@@ -155,7 +156,7 @@
         <p>Some stuff in a paragraph</p>
 
 
-## Colors
+### Colors
 * RGBA and HSLA use opacity
     - Opacity of 0 is completely transparent, whereas an opacity of 1 is completely opaque
 * Notice the different
@@ -176,7 +177,7 @@
     - Good rule of thumb: RGBA for setting the background of something transparent (like a caption over an image), but still need readable text -- opacity for animations
 
 
-## Cascade and Inheritance
+### Cascade and Inheritance
 * CONFLICTING ORDER: I call this the "order of operations of CSS", such that the first bullet here gets applied, then the second, then the third
     1. The user agent's (browser) default styling
     2. The declarations in a user's stylesheet (the person visiting the website)
@@ -212,7 +213,7 @@
 * What IS inherited: font-family, color
 * What IS NOT inherited: margin, padding, border, background-image
 
-## Box Model
+### Box Model
 * [Margin collapse Stackoverflow explanation](https://stackoverflow.com/questions/7168993/how-do-nested-vertical-margin-collapses-work)
 * When do elements *not* collapse?
     - Positioned elements
@@ -251,8 +252,11 @@
     - this is important: it started on a new line no because it has `block` in its name, but rather, due to it being inline, it was originally trying to fit on that first line of text after the first sentence. However, since is *is* a box, it's keeping that integiry, so it started it on a new line in order for the box to fit. As we see, it does still act as an `inline`, because there is still text coming right after the box
         - GREAT example by MDN! Kudos
 
+----
 
-## Font styling
+## Styling Text
+
+### Font styling
 * [link to web safe fonts](https://www.cssfontstack.com/)
 * The five generic web fonts and what they mean
     ![term, definition, and example](https://i.imgur.com/4hoFOjt.png)
@@ -272,7 +276,7 @@
     - It accepts multiple values, and you can even style those values
         - `text-decoration-line`, `text-decoration-style`, `text-decoration-color`
 
-## List styling
+### List styling
 * Three important properties for styling lists
     1. `list-style-type`
         - square, circle, numbers, letters, roman numerals
@@ -284,7 +288,7 @@
         ![inside](https://i.imgur.com/B16DlaI.png)
     3. `list-style-image`
 
-## Links styling
+### Links styling
 * Important to konw their psuedo-class states
     - Link (means it is univisited)
         - The default *state* that the link resides in (aka when it isn't in any other state)
@@ -300,3 +304,21 @@
         - You can achieve this by holding down the mouse button, but not letting go
 * The order you override the pseudo-classes matters
     - [Visit MDN to get the order](https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Styling_links)
+
+### Web Fonts
+* Web fonts are a CSS feature that allows you to specify font files to be downloaded along with your websites as it is accessed -- this means any browswer that supports web fonts can have the exact font you want
+* You specify a web font like this:
+    ```css
+    @font-face {
+        font-family: "myFont",
+        src: url("myFont.ttf");
+    }
+
+    html {
+        font-family: "myFont";
+    }
+    ```
+    - It's important to note that you can name the `font-family` anything you would like, just as long as you continue to refer to it that way throughout your CSS
+* A good article on implementing `@font-face` and using the same `font-family` name for the same font style of text, but when you have downloaded different versions of it
+    - Example] Say you download a font called 'DroidSerif' in its regular and bold version
+        - Instead of naming each `font-family` to their respective names (DroidSerifRegular and DroidSerifBold), just name them both the same (DroidSerif), but then change the `font-weight` on each `@font-face` so that don't have to keep specifying `font-family` in your CSS when you want to use a specific version of DroidSerif
