@@ -231,5 +231,39 @@
                 ![This is what should happen](https://imgur.com/a/HttuFsz)
             - What **should not** happen:
                 ![This is what should NOT happen](https://imgur.com/a/Oh4Izna)
+* Content's width is defaulted to be 100% of the avilable space (after the margin, border, and padding have taken their share)
+* [`background-clip`](https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip) is how you determine how far an image extends out to the edge of the border
 
 
+### Types of boxes
+* `block`
+* `inline`
+    - Width and height settings have no effect on the `inline` boxes
+* `inline-block`
+    - flows like `inline`, but **can** be sized using width and height
+
+![example](https://i.imgur.com/oTTcsdo.png)
+
+* The first line: `inline`
+* The second line: `block`
+* The third line: `inline-block`
+    - this is important: it started on a new line no because it has `block` in its name, but rather, due to it being inline, it was originally trying to fit on that first line of text after the first sentence. However, since is *is* a box, it's keeping that integiry, so it started it on a new line in order for the box to fit. As we see, it does still act as an `inline`, because there is still text coming right after the box
+        - GREAT example by MDN! Kudos
+
+
+## Font styling
+* [link to web safe fonts](https://www.cssfontstack.com/)
+* The five generic web fonts and what they mean
+    ![term, definition, and example](https://i.imgur.com/4hoFOjt.png)
+* `font-size`
+    - `em`s: 1em = font size of parent element of the current element
+* Important note on `em`
+    - Since the default value of HTML `font-size` is 16px, if you use `2em` it would compute to 32px
+        - However, let's say we declare the `font-size` of a child element, such as `article`, to `font-size: 1.5em;`, which now computes to 24px
+            - If we are to know specify the `font-size` of a `<p>` element nested inside of the `<article>` element, it would be **based off the `<article>` elements new `font-size` of 24.
+                - Therefore, to get a computed font size of 20px, we need to use `0.83333333em`
+
+* `text-decoration` is more interesting than you think
+    - Values: `none`, `underline`, `overline`, `line-through`
+    - It accepts multiple values, and you can even style those values
+        - `text-decoration-line`, `text-decoration-style`, `text-decoration-color`
