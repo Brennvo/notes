@@ -376,3 +376,47 @@
 
 * **ALWAYS SET A BACKGROUND-COLORS AND FONT COLORS REGARDLESS OF WHETHER IT LOOKS GOOD WITHOUT ONE OR NOT**
     - [link explaining why due to new nightmode in browsers](https://www.luu.io/posts/web-devs-font-color)
+
+### Borders
+* `border-radius` can take different specificities
+
+    ```css
+        /* 1st value is top left and bottom right corners,
+    2nd value is top right and bottom left  */
+    border-radius: 20px 10px;
+    /* 1st value is top left corner, 2nd value is top right
+    and bottom left, 3rd value is bottom right  */
+    border-radius: 20px 10px 50px;
+    /* top left, top right, bottom right, bottom left */
+    border-radius: 20px 10px 50px 0;
+    ```
+
+* `border-image` is a powerful way to get an image as the border, but the `border-image-slice` can be a bit confusing. [Here is an article that describes it best](http://thenewcode.com/438/CSS-Border-Image-Explained)
+
+### Syling Tables
+* `border-collapse: collapse;` is what brings borders from the default two lines to one, single line
+* you can change where a caption is placed by using `caption-side`, which takes the following:
+    - `bottom`
+    - `top`
+
+
+### Advanced box effects
+
+#### Box shadows
+* order
+    1. horizontal offset (distance to right)
+        - positive value => moves to right
+        - negative value => moves to left
+    2. vertical offset (distance downwards)
+        - positive value => downwards
+        - negative value => upwards
+    3. blur radius
+    4. base color
+* when you stack box shadows, be sure that they are cascading such that you can actually see the next box
+    - if you make one as such:
+    ```css
+    box-shadow: 1px 1px 1px black;
+    ```
+    your next shadow will need to be `2px` in order to see it
+
+#### Filters
