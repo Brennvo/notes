@@ -335,7 +335,7 @@
     - this means it overlays the padding **and** border
         - However, if you have an opaque border, the background-image will hide behind it
 * To make a border without changing the size of the box, use `outline` -- it is drawn **on top** of the box
-* you **CANNOT** tamper with an `inline` box's width and height settings
+* **you CANNOT tamper with an `inline` box's width and height settings**
     - padding, margin, and border of these elements only affect the surrounding text, but **not** the surrounding block boxes
 * To center a container inside of its parent: `margin: 0 auto;`
 * Important and recursive example I always fall into
@@ -420,3 +420,82 @@
     your next shadow will need to be `2px` in order to see it
 
 #### Filters
+* Can be applied to any element (block or element) using the `filter` property
+* `drop-shadow()` works on the actual *shapes* of the content inside the box, not just the box
+    * NOT supported in IE
+
+#### Blend modes
+* Tell CSS what to do when two elements overlap
+    - `background-blend-mode`: blends together multiple background iamges
+    - `mix-blend-mode`: blends together the element it is set on with elements it is overlapping
+        - **both** background AND content
+
+## CSS Layout
+
+### Introduction
+* We use displays to manipulate the way something is displayed, while still keeping the semantic meaning of the element
+    - For instance, having a `<li>` go from a block to an inline means we tell the markup it is still a list, however, we are manipulating its appearance
+
+#### Flexbox briefing
+* By default, the height of each item is streteched to the height of the tallest item, since the default value of `align-items` in `flex-direction: row` is `stretch`
+* By doing `flex: 1` to our specific items in the flex, we tell it to:
+    - grow and fill the container when there is enough space, but also shrink and become narrower if the space gets smaller
+    - if you apply this to all the items, then they will adjust to take up the same amount of space evenly
+
+### Normal Flow
+* By default, a **block level** element's width and heigth are:
+    - 100% the width of its parent element
+    - as tall as their content
+* By default, an **inlin element's** width and height are:
+    - width is as wide as their content
+    - height is as wide as their content
+* CANNOT SET WIDTH AND HEIGHT ON AN INLINE ELEMENT
+    - You have to forcibly change the behvaior by setting it to
+        - `display: inline-block` or `display: block;`
+
+### Flexbox
+* shorthand for `flex-direction` and `flex-wrap` is `flex-flow`
+    - `flex-flow`: flex-direction, flex-wrap
+        - Ex] `flex-flow: row wrap;`
+* Example]
+    - parent width: 900px;
+    - `<section>` width: 99px
+    - `<aside>` width: 623px
+    - total flex-grow values: 3
+    - **Calculation**
+        - Total elements take up: 99 + 623 = 722
+        - Remaining space = 900 - 722 = 178
+        - Divide how much **one** flex-grow is by dividing it by the total *count* of `flex-grows` we have **(ignore the actual values assigned in this calculation)**
+            - 178 / 3 = 59.33
+    - So, one `flex-grow` is 59.33
+    - **Divy it up**
+        - In our example, `<article>` has a flex-grow value of 2
+            - `<article>` receives (59.33 * 2) = 118.66 space, **plus its additional width of 99**, which now evaulates to a total width of 217.66
+        - `<section>` receives (59.33 * 1 ) = 59.33 + 623 = 682.33
+* [Good article on flex-basis vs. width](https://gedd.ski/post/the-difference-between-width-and-flex-basis/)
+* `flex-basis` on columns adjusts height, `flex-basis` on rows adjusts width
+    - [link](https://technet.microsoft.com/en-us/windows/dn254946(v=vs.60))
+    - [link](https://webplatform.github.io/docs/css/properties/flex-basis/)
+    - [another link](https://stackoverflow.com/questions/34352140/what-are-the-differences-between-flex-basis-and-width)
+    - [another link](https://stackoverflow.com/questions/46716277/flex-basis-not-expanding-width)
+
+#### flex-grow explained
+* when we normally do `display: flex;`, flex items are stacked horizontally and if there isn't enough space, they will shrink in size
+* If there is more than enough space, however, we can have it distribute accordingly
+1. Count how many `flex-grow`s there are
+    - if you have a css selector such as `div { flex: 1; }`, then you need to include how many `<divs>` there are in your HTML so you can get the total amount
+
+
+#### What does `flex: 1` mean??
+* `flex: 1` is a unitless proportion that dictates how much of the available space along the main axis each flex item will take up
+    - a value of 1 indicates that they will take up an equal amount of space along the main axis
+
+#### Flexbox default values
+* `align-items`, which aligns items on the *cross axis*, is automatically set to `stretch`
+    - IF the flex-item has a parent, it will stretch to fill the parent's width
+    - IF the flex-item *does not* have a parent, it will stretch to fill as long as the longest flex-item (basically, which ever flex item has the most text)
+* All flex items have an `order` value of 0
+    - So, that means, if you just give one of the flex items a positive value, it is viewed as the "end"
+        - The same can be said about negative values as well
+    - If some have the same values, then it is ordered based off of the source order
+
