@@ -457,6 +457,7 @@
 * shorthand for `flex-direction` and `flex-wrap` is `flex-flow`
     - `flex-flow`: flex-direction, flex-wrap
         - Ex] `flex-flow: row wrap;`
+* `justify-content` is only when there is avialble space on the main axis
 * Example]
     - parent width: 900px;
     - `<section>` width: 99px
@@ -465,7 +466,7 @@
     - **Calculation**
         - Total elements take up: 99 + 623 = 722
         - Remaining space = 900 - 722 = 178
-        - Divide how much **one** flex-grow is by dividing it by the total *count* of `flex-grows` we have **(ignore the actual values assigned in this calculation)**
+        - Divide how much **one** flex-grow is by dividing it by the total values of the `flex-grow` --> (`flex=grow: 2` + `flex-grow: 1`) = 3
             - 178 / 3 = 59.33
     - So, one `flex-grow` is 59.33
     - **Divy it up**
@@ -491,6 +492,7 @@
     - a value of 1 indicates that they will take up an equal amount of space along the main axis
 
 #### Flexbox default values
+* on the main axis, items **do not stretch**, but rather, take up the size of their content as the size in the main axis
 * `align-items`, which aligns items on the *cross axis*, is automatically set to `stretch`
     - IF the flex-item has a parent, it will stretch to fill the parent's width
     - IF the flex-item *does not* have a parent, it will stretch to fill as long as the longest flex-item (basically, which ever flex item has the most text)
@@ -498,4 +500,37 @@
     - So, that means, if you just give one of the flex items a positive value, it is viewed as the "end"
         - The same can be said about negative values as well
     - If some have the same values, then it is ordered based off of the source order
+* When you have multiple items in a container that wrap around to multiple lines, you can define how that content is spread out line-per-line by specifying `align-content` in the container itself
+* If items are too large to display on one line, they will shirnk to fit the container, or overflow if the items could not shrink small enough to fit
 
+
+#### `justify-self` workaround
+* Since Flexbox treats items along the main axis as a group, you cannot explicitly call out an item on there and have it justify itself alone
+* the trick around this is to use margins
+    1. Target the item you want to manipulate by giving it a class, id, etc.
+    2. in your css, do the following
+        ```css
+        .targetItem {
+            margin-left: auto;
+        }
+        ```
+        This will effectively push the item to the right side of the screen since auto margins take up as much space as possible
+
+
+#### `flex` shorthand = `flex-grow`, `flex-shrink`, `flex-basis`
+* the default value is `flex: 0 1 auto`, which is also `flex: initial`
+    - `flex-grow` of 0 means that it will *not* grow larger than their flex basis
+    - `flex-shrink` of 1 means that items can shrink if they need to rather than overflowing
+    - `flex-basis` of auto means that items will either use any size set on the item in the main dimension, or they will get their size from their content
+* It is good to use `flex: auto`, which is equivalent to `flex: 1 1 auto`
+    - This is the same as above, although now, the items are allowed to grow
+* The shorthand you often see in tutorials is `flex: 1` or `flex: 2` and so on. This is as if you used `flex: 1 1 0`. The items can grow and shrink from a `flex-basis` of 0.
+* **POSITIVE FREE SPACE** is when the flex containre has more space than is required to display the flex items inside the container
+* **NEGATIVE FREE SPACE** is when the natrual size of the items add up to a total that is larger than the availabe space in the flex container
+* When `flex-basis` is set to auto (which remember, is the initial value as per above), then it will take up the **max-content width**, so basically, it just gives it as much space as the content dictates
+* When 'flex-basis` is 0, it uses the `min-width`, so it will take up the max length of the the text characters (or image, whatever have you)
+* Example]
+    - If you have items with a `flex: 1 1 auto`, you are saying that it can equally share growth space. However, it doesn't mean they will all end up being the same width, because since `flex-basis` in this shorthand is set to `auto`, it means that the width is equal to the `max-content` of the box
+        - So, while they all get an equal share of the pie in regards to the available free space, the box with more content will still naturally appear larger due to having more content
+    - ---> to avoid this, you set the `flex-basis` in the shorthand to 0 so that it starts out as min-width
+* **what is important to remember on this is that this is all assuming we have free space. If I go into codepen in the link above and enter "sldjflkadsjflakdsjflaksdjfalksdflasdfjlsdkjfsljflsdjfakdsl" into the box, there won't be enough free space to see our examples since that box has so much content. It's better exemplified if you give a longer setence with spaces "content like this will work better in teh examples since min-content is much better than the min-content of the long string above"
