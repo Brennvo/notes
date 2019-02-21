@@ -559,3 +559,16 @@
         - If the added sum is < the container's width, then `flex-grow` will come into play
 ** **YOU DO NOT HAVE TO ADD EXTRA SPACE TO YOUR ITEMS IF YOU DON'T WANT, YOU CAN SIMPLY MOVE ITEMS AROUND INSIDE OF THE FREE SPACE ITSELF BY USING `justify-content` AS WE FIRST LEARNED**
     - all caps because this is importatnt. After learning a lot about `flex-grow` and `flex-shrink`, it makes it seem like you HAVE to distribute free space, but you **don't**. It's up to your requirements/vision
+
+### wrapping in flexbox
+- First and foremost, if you have a defined size for your flex items and you allow it to wrap, it will wrap once that default value cannot fit on the main axis (either being row or column)
+    - When it does this, the items will start on a **new line**, which then means flexbox will treat each new line as its own "container"
+    - In doing this, you may notice that each row has some extra space
+        - For example, if your container is 800px and your flex items are 250 px each, you can only fit a maximum of 3 (250*3 = 750) items in that row with 50px left
+            - if you don't have them grow, then this 50px of empty space will show. If you do this, you can give it a `justify-content` to move the items around in that empty space **for each row**
+            - Alternatively, you can give them a `flex-grow` value of `1` and it will then distribte the extra space by adding more to each flex-item as we have previously talked about
+- There is a limiting to all of this
+    - Say we have a container of size 800 and flex items of 250px
+    - If we wrap the items and give them a `flex-grow` of 0, then the items will have that extra 50px of space as we calculated above. Since `justify-content` is `flex-start` as default, the items will line up on the left (assuming normal flex-direction of row)
+        - That being said, we might have one extra flex item on the very last wrap cotainer row, and maybe this one should be centered. Great --> all we have to do is justify-content: center
+            - **but**, now look at the other items. Since we have `flex-grow` to 0, they are not spaced out and filling up the container. Well, unfortunatley, we can't do `flex-grow` to 1, because then the flex-item in the last row will now grow to fit it's entire row. We can't have both `flex-grow` to 1 and also `justify-content` to `center`. We either satisfy the boxes above the last row, or we satisfy the last row.
