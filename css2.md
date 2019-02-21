@@ -534,3 +534,28 @@
         - So, while they all get an equal share of the pie in regards to the available free space, the box with more content will still naturally appear larger due to having more content
     - ---> to avoid this, you set the `flex-basis` in the shorthand to 0 so that it starts out as min-width
 * **what is important to remember on this is that this is all assuming we have free space. If I go into codepen in the link above and enter "sldjflkadsjflakdsjflaksdjfalksdflasdfjlsdkjfsljflsdjfakdsl" into the box, there won't be enough free space to see our examples since that box has so much content. It's better exemplified if you give a longer setence with spaces "content like this will work better in teh examples since min-content is much better than the min-content of the long string above"
+* How `flex-shrink` works; broswer will see if the `flex-basis` can fit, and if not, it will shrink if you specify the `flex` to do so
+* Go down to the [flex-shrink and flex-basis portion of MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Controlling_Ratios_of_Flex_Items_Along_the_Main_Ax) and toggle between these two `flex` values
+    - `flex: 1 1 auto;`
+    - `flex: 1 0 auto;`
+** ITEMS ARE FLOORED IN FLEX-SHRINK TO THE SIZE OF THEIR MIN-CONTENT, SO THEY WON'T JUST START SHRINKING AUTOMATICALLY
+    - [look at this codepen example](https://codepen.io/Hankis/pen/gqJjWj)
+        - Notice how we have a red box that is centerd. We need all of the content inside of there.
+        1. Set all `<divs>` to this:
+            - `flex: 0 0 auto;`
+        2. Change `.three` to `flex: 0 1 auto`;
+            - Notice how it will now shrink the box so it fits within the red border.
+        3. Change `.three` back to `flex: 0 0 auto` and instead change `.one` to `flex: 0 1 auto`
+            - Notice how it won't do anything. It's not shrinking! This is because it **floors to the size of min-content** as we mentioend above. It can't do anything to reduce the box because it will not forgoe the integrity of its content for the sake of shrinking.
+
+#### Important takeaways
+* Flex basis rendering
+    - If the flex-item has a `flex-basis` that is set to `auto` and the flex-item **does** have a defined width somehwere else in the code (such as 500px, 50%, etc.), `auto` refers to that size.
+        - However, if there **is not defined width**, then `auto` is converts to the size of the content (and in the max-content fashion)
+    - Giving a flex item a unit value, it will revert to that size
+* Available space
+    - The first thing to do is calculate how much space the flexed items are taking up so we can determine if `flex-grow` and `flex-shrink` will even come into play
+        - If the added sum is > the container's width, then `flex-shrink` will come into play
+        - If the added sum is < the container's width, then `flex-grow` will come into play
+** **YOU DO NOT HAVE TO ADD EXTRA SPACE TO YOUR ITEMS IF YOU DON'T WANT, YOU CAN SIMPLY MOVE ITEMS AROUND INSIDE OF THE FREE SPACE ITSELF BY USING `justify-content` AS WE FIRST LEARNED**
+    - all caps because this is importatnt. After learning a lot about `flex-grow` and `flex-shrink`, it makes it seem like you HAVE to distribute free space, but you **don't**. It's up to your requirements/vision
