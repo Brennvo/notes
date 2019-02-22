@@ -502,9 +502,10 @@
     - If some have the same values, then it is ordered based off of the source order
 * When you have multiple items in a container that wrap around to multiple lines, you can define how that content is spread out line-per-line by specifying `align-content` in the container itself
 * If items are too large to display on one line, they will shirnk to fit the container, or overflow if the items could not shrink small enough to fit
+* `flex-grow`'s intial value is 0, meaning it won't grow
 
 
-#### `justify-self` workaround
+#### `justify-self` workaround (split navigation AKA margin pusher)
 * Since Flexbox treats items along the main axis as a group, you cannot explicitly call out an item on there and have it justify itself alone
 * the trick around this is to use margins
     1. Target the item you want to manipulate by giving it a class, id, etc.
@@ -572,3 +573,39 @@
     - If we wrap the items and give them a `flex-grow` of 0, then the items will have that extra 50px of space as we calculated above. Since `justify-content` is `flex-start` as default, the items will line up on the left (assuming normal flex-direction of row)
         - That being said, we might have one extra flex item on the very last wrap cotainer row, and maybe this one should be centered. Great --> all we have to do is justify-content: center
             - **but**, now look at the other items. Since we have `flex-grow` to 0, they are not spaced out and filling up the container. Well, unfortunatley, we can't do `flex-grow` to 1, because then the flex-item in the last row will now grow to fit it's entire row. We can't have both `flex-grow` to 1 and also `justify-content` to `center`. We either satisfy the boxes above the last row, or we satisfy the last row.
+    
+### Ordering
+* Reordering (through `flex-direction` or `order`) is purely a visual mechanic. The tabs will be navigated based on the source order.
+
+#### Cool `display: contents` property (though not very supported)
+* If you have something like this:
+
+    ```html
+    <div class="container">
+        <div>one</div>
+        <div>two</div>
+        <div class="nested">
+            <div>Sub-item 1</div>
+            <div>Sub-item 2</div>
+          </div>           
+    </div>
+    ```
+
+    and you want to do `display: flex` on the `container` class, then the sub items obviously won't get that flex proeprty.
+
+    - However, if you did want those sub-items to behave as children of `container`, then you could do:
+
+        ```css
+        .nested {
+            display: contents;
+        }
+        ```
+
+        and those children are now acting as children of the `container` class
+
+#### Pushing a navigation bar down to the bottom (very useful)
+* Let's say we have some content in a container and we want the very last `<footer>` to stay pushed to the botom
+    - All we have to do is make the flex container a `column`, and then we need to target every element *except* the footer and tell it to grow if there is space
+    - Since the default `flex-grow` value is 0, what this does is effectively keep the footer the same height (remember -- flex-basis on columsn affects height), while the other contens will grow as there is extra space. This naturally pushes down the footer and gives us that great appearence of a footer.
+
+
