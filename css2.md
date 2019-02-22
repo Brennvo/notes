@@ -608,4 +608,37 @@
     - All we have to do is make the flex container a `column`, and then we need to target every element *except* the footer and tell it to grow if there is space
     - Since the default `flex-grow` value is 0, what this does is effectively keep the footer the same height (remember -- flex-basis on columsn affects height), while the other contens will grow as there is extra space. This naturally pushes down the footer and gives us that great appearence of a footer.
 
+## Positioning
+#### Static
+* This is the **default positioning* of elements
 
+##### Relative
+* This is the same as static such that it stays in the normal flow, but it allows us to edit the position of it
+
+#### Absolute
+* Removes the element from its normal flow and it sits on its own layer
+* Useful for things like popups, control menus, rollover panels
+* The way in which `top`, `bottom`, `left`, and `right` are interesting with this: it is related to the containing element, which for an absolute position, is related to the **ancestor elements position**
+    - If none of the ancestor elements have their position defined, then by default, it is static (as mentioned above) and in this case, the absolute position element is contained outside of the `<html>` tag, which means it is positioned relative to the initial viewport
+* If you want it to be positioned relative to something other than the viewport, you have to change the position on one of its ancestors (this means the absolute positioned element must be nested **inside** of this ancestor, or else you won't get the effecdt)
+    - So, if you position the `<body>` to `position: relative` then the absolute positioned element will now change `top`, `bottom`, etc. relative to the body element
+* If you have two absolute positioned elements, the one that "appears" overtop the other one is based on the source code
+    - later elements will appear overtop the earlier elements
+    - you can override this by utilizing z-indexes
+* Higher z-index values appear over lower valued z-indexes
+
+#### Sticky
+* Sticky positioning is awesome; it's a mix of relative and absolute
+    - The element remains relative to where it's located in normal flow, but once you get past a certain point on the viewport, it becomes a fixed element
+* Ex]
+    ```css
+    .div {
+        display: sticky;
+        top: 20px;
+    }
+    ```
+    - Read like this: when you scroll 20px down the viewport (remember, this is the **viewport**, so it's your screen), make this element a fixed position
+* [Great codepen example](https://codepen.io/Hankis/pen/ZwdqPw)
+    - Do the following
+    1. Change `top` from 0px to 10px to really see how it works
+    2. do `dt:nth-of-type(3) { z-index: 1 }` to show how z-index takes power in an example such as this
