@@ -609,3 +609,10 @@
     - Since the default `flex-grow` value is 0, what this does is effectively keep the footer the same height (remember -- flex-basis on columsn affects height), while the other contens will grow as there is extra space. This naturally pushes down the footer and gives us that great appearence of a footer.
 
 
+## Floats
+* Making an element float removes it from the normal flow, therefore, things run *behind* the float, so adding a margin or padding to the elements behind the floated element won't actually push our floated element anywhere
+    - [Codepen example](https://codepen.io/pen/?&editable=true)
+* If you don't want an element to respond to a floated element (meaning that the elemnt shouldn't wrap around the floated element like it normally does) you can use the `clear` property, which taekes three possible values
+    - `left`: clears in respect to elements that are being floated on the left
+    - `right`: clears in respect to elements that are being floated on the right
+    - `both`: clears left and right floated elements
