@@ -608,8 +608,6 @@
     - All we have to do is make the flex container a `column`, and then we need to target every element *except* the footer and tell it to grow if there is space
     - Since the default `flex-grow` value is 0, what this does is effectively keep the footer the same height (remember -- flex-basis on columsn affects height), while the other contens will grow as there is extra space. This naturally pushes down the footer and gives us that great appearence of a footer.
 
-<<<<<<< HEAD
-
 ## Floats
 * Making an element float removes it from the normal flow, therefore, things run *behind* the float, so adding a margin or padding to the elements behind the floated element won't actually push our floated element anywhere
     - [Codepen example](https://codepen.io/pen/?&editable=true)
@@ -617,7 +615,8 @@
     - `left`: clears in respect to elements that are being floated on the left
     - `right`: clears in respect to elements that are being floated on the right
     - `both`: clears left and right floated elements
-=======
+
+
 ## Positioning
 #### Static
 * This is the **default positioning* of elements
@@ -652,4 +651,3 @@
     - Do the following
     1. Change `top` from 0px to 10px to really see how it works
     2. do `dt:nth-of-type(3) { z-index: 1 }` to show how z-index takes power in an example such as this
->>>>>>> 796c26857748363037a4365115cc7592323bb70e
